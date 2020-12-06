@@ -7,7 +7,7 @@ public class ObslugaBazy {
    static final String USER = "DKrol";
    static final String PASS = "password";
    
-	Exception error;
+	static Exception error;
 	
    public static void main(String[] args) {
    Connection conn = null;
