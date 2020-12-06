@@ -30,26 +30,21 @@ public class ObslugaBazy {
       sql = "INSERT INTO Users " +
                    "VALUES (3, 'Jan', 'Kowalski', 'jKowalski@gmail.com')";
       stmt.executeUpdate(sql);
-	   /*
-      sql = "SELECT PersonID, FirstName, LastName, Address, City FROM Persons";
+	   
+      sql = "SELECT firstname, lastname, email FROM Users";
       ResultSet rs = stmt.executeQuery(sql);
 
       while(rs.next()){
-         int id  = rs.getInt("PersonID");
-         String first = rs.getString("FirstName");
-         String last = rs.getString("LastName");
-		 String address = rs.getString("Address");
-		 String city = rs.getString("City");
+         String first = rs.getString("firstname");
+         String last = rs.getString("lastname");
+	 String email = rs.getString("email");
 
-         System.out.println("ID: " + id);
-         System.out.println(", First: " + first);
-         System.out.println(", Last: " + last);
-		 System.out.println(", Address: " + address);
-		 System.out.println(", City: " + city);
+         System.out.println(", Imię: " + first);
+         System.out.println(", Nazwisko: " + last);
+	 System.out.println(", Email: " + email);
       }
 	   
       rs.close();
-      */
 	   
       stmt.close();
       conn.close();
