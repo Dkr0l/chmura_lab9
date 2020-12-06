@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class ObslugaBazy {
    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://Cloud2020-88732:3306/baza";
+   static final String DB_URL = "jdbc:mysql://10.0.10.3:3306/baza";
 
    static final String USER = "DKrol";
    static final String PASS = "password";
@@ -15,11 +15,30 @@ public class ObslugaBazy {
       System.out.println("Connecting to database...");
       conn = DriverManager.getConnection(DB_URL,USER,PASS);
       stmt = conn.createStatement();
-      String sql;
-      //sql = "SELECT PersonID, FirstName, LastName, Address, City FROM Persons";
-      //ResultSet rs = stmt.executeQuery(sql);
-
+      String sql="CREATE TABLE Users (
+      	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      	firstname VARCHAR(30) NOT NULL,
+      	lastname VARCHAR(30) NOT NULL,
+      	email VARCHAR(50),
+      	reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )";
+		
+      stmt.executeUpdate(sql);
+      System.out.println("Created table in given database...");
+	   
+      sql = "INSERT INTO Users " +
+                   "VALUES (1, 'Ali', 'Baba', 'gold@hand.com')";
+      stmt.executeUpdate(sql);
+      sql = "INSERT INTO Users " +
+                   "VALUES (2, 'Baba', 'Wanga', 'putin@forever.ru')";
+      stmt.executeUpdate(sql);
+      sql = "INSERT INTO Users " +
+                   "VALUES (3, 'Jan', 'Kowalski', 'jKowalski@gmail.com')";
+      stmt.executeUpdate(sql);
 	   /*
+      sql = "SELECT PersonID, FirstName, LastName, Address, City FROM Persons";
+      ResultSet rs = stmt.executeQuery(sql);
+
       while(rs.next()){
          int id  = rs.getInt("PersonID");
          String first = rs.getString("FirstName");
@@ -33,9 +52,10 @@ public class ObslugaBazy {
 		 System.out.println(", Address: " + address);
 		 System.out.println(", City: " + city);
       }
-      */
 	   
       rs.close();
+      */
+	   
       stmt.close();
       conn.close();
    }catch(SQLException se){
