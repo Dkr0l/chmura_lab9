@@ -21,7 +21,7 @@ public class ObslugaBazy {
       // check if "Users" table exist
       ResultSet tables = dbm.getTables(null, null, "Users", null);
       if (!tables.next()) {	//Table Users does not exist
-      	sql="CREATE TABLE Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(30) NOT NULL,lastname VARCHAR(30) NOT NULL,email VARCHAR(50))";	
+      	sql="CREATE TABLE Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(20) NOT NULL,lastname VARCHAR(20) NOT NULL,email VARCHAR(30))";	
 	stmt.executeUpdate(sql);
 	sql = "INSERT INTO Users " +
                    "VALUES (1, 'Ali', 'Baba', 'gold@hand.com')";
@@ -38,7 +38,7 @@ public class ObslugaBazy {
       sql = "SELECT id, firstname, lastname, email FROM Users";
       ResultSet rs = stmt.executeQuery(sql);
       System.out.println("TABLE USERS");
-      String format = "%6s\t| %30s\t| %30s\t| %50s";
+      String format = "%6s\t| %20s\t| %20s\t| %30s";
       System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
       while(rs.next()){
 	 int id = rs.getInt("id");
