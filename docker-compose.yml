@@ -12,8 +12,8 @@ services:
   networks:
    Bridge-Zadanie-1:
     ipv4_address: 10.0.10.3
-  ports:
-   - "3306:3306"
+  expose:
+   - 3306
  java:
   build:
    context: ./
