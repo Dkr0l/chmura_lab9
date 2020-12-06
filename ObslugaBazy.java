@@ -40,7 +40,7 @@ public class ObslugaBazy {
       System.out.println("TABLE USERS");
       String format = "%6s\t| %20s\t| %20s\t| %30s";
       System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
-      System.out.println("------+--------------------+--------------------+------------------------------");	//draws a horizontal line
+      System.out.println("--------+----------------------+-----------------------+------------------------------");	//draws a horizontal line
       while(rs.next()){
 	 int id = rs.getInt("id");
          String first = rs.getString("firstname");
