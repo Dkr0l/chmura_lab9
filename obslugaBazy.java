@@ -1,8 +1,8 @@
 import java.sql.*;
 
-public class DockerConnectMySQL {
+public class ObslugaBazy {
    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://db:3306/firstdb";
+   static final String DB_URL = "jdbc:mysql://Cloud2020-88732:3306/firstdb";
 
    static final String USER = "user";
    static final String PASS = "pass123";
