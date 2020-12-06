@@ -40,7 +40,7 @@ public class ObslugaBazy {
       sql = "SELECT id, firstname, lastname, email FROM Users";
       ResultSet rs = stmt.executeQuery(sql);
       System.out.println("TABLE USERS");
-      String foramt = "%s\t| %s\t| %s\t| %s";
+      String format = "%s\t| %s\t| %s\t| %s";
       System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
       while(rs.next()){
 	 int id = rs.getInt("id");
