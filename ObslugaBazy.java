@@ -19,7 +19,7 @@ public class ObslugaBazy {
       stmt = conn.createStatement();
       String sql;
 	   
-      DatabaseMetaData dbm = con.getMetaData();
+      DatabaseMetaData dbm = conn.getMetaData();
       // check if "Users" table exist
       ResultSet tables = dbm.getTables(null, null, "Users", null);
       if (!tables.next()) {	//Table Users does not exist
