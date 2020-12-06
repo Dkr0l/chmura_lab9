@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class ObslugaBazy {
    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://10.0.10.3:3306/baza";
+   static final String DB_URL = "jdbc:mysql://Cloud2020-88732:3306/baza";
 
    static final String USER = "DKrol";
    static final String PASS = "password";
@@ -56,18 +56,8 @@ public class ObslugaBazy {
       conn.close();
    }catch(SQLException se){
       se.printStackTrace();
-	   boolean a=true;
-	   while(a){
-	   	Thread.sleep(1000);
-	   	System.out.println("SQL exception...");
-	   }
    }catch(Exception e){
       e.printStackTrace();
-	   boolean a=true;
-	   while(a){
-	   	Thread.sleep(1000);
-	   	System.out.println("Something went wrong...");
-	   }
    }finally{
       try{
          if(stmt!=null)
@@ -80,6 +70,13 @@ public class ObslugaBazy {
       }catch(SQLException se){
          se.printStackTrace();
       }
+	   try{
+		   boolean running=true;
+	   while(running){
+	   	Thread.sleep(1000);
+	   	System.out.println("Coś poszło nie tak...");
+	   }
+	   }catch(Exception e){}
    }
  }
 }
