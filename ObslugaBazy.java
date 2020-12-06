@@ -56,8 +56,18 @@ public class ObslugaBazy {
       conn.close();
    }catch(SQLException se){
       se.printStackTrace();
+	   boolean a=true;
+	   while(a){
+	   	Thread.sleep(1000);
+	   	System.out.println("SQL exception...");
+	   }
    }catch(Exception e){
       e.printStackTrace();
+	   boolean a=true;
+	   while(a){
+	   	Thread.sleep(1000);
+	   	System.out.println("Something went wrong...");
+	   }
    }finally{
       try{
          if(stmt!=null)
