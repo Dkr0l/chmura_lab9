@@ -15,14 +15,9 @@ public class ObslugaBazy {
       System.out.println("Connecting to database...");
       conn = DriverManager.getConnection(DB_URL,USER,PASS);
       stmt = conn.createStatement();
-      String sql="CREATE TABLE Users (
-      	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      	firstname VARCHAR(30) NOT NULL,
-      	lastname VARCHAR(30) NOT NULL,
-      	email VARCHAR(50),
-      	reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-      )";
-		
+      String sql;
+	   
+      sql="CREATE TABLE Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(30) NOT NULL,lastname VARCHAR(30) NOT NULL,email VARCHAR(50),reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";	
       stmt.executeUpdate(sql);
       System.out.println("Created table in given database...");
 	   
