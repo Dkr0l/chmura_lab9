@@ -46,17 +46,8 @@ public class ObslugaBazy {
 	  
 	   boolean running=true;
 	   while(running){
-	   ResultSet rs = stmt.executeQuery(sql);
-
-      while(rs.next()){
-         String first = rs.getString("firstname");
-         String last = rs.getString("lastname");
-	 String email = rs.getString("email");
-
-         System.out.println(", Imię: " + first);
-         System.out.println(", Nazwisko: " + last);
-	 System.out.println(", Email: " + email);
-      }
+	   	Thread.sleep(1000);
+	   	System.out.println("Running...");
 	   }
 	   
       rs.close();
