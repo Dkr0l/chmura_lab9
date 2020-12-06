@@ -7,8 +7,6 @@ public class ObslugaBazy {
    static final String USER = "DKrol";
    static final String PASS = "password";
    
-	static Exception error;
-	
    public static void main(String[] args) {
    Connection conn = null;
    Statement stmt = null;
@@ -40,7 +38,7 @@ public class ObslugaBazy {
       sql = "SELECT id, firstname, lastname, email FROM Users";
       ResultSet rs = stmt.executeQuery(sql);
       System.out.println("TABLE USERS");
-      String format = "%s\t| %s\t| %s\t| %s";
+      String format = "%6s\t| %30s\t| %30s\t| %50s";
       System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
       while(rs.next()){
 	 int id = rs.getInt("id");
@@ -48,7 +46,6 @@ public class ObslugaBazy {
          String last = rs.getString("lastname");
 	 String email = rs.getString("email");
          System.out.println(String.format(format, id+"", first+"", last, email));
-	 //System.out.println(" ID: "+id+"\t Imię: " + first+"\t Nazwisko: " + last+"\t Email: " + email);
       }
 	  
 	   boolean running=false;
@@ -63,26 +60,20 @@ public class ObslugaBazy {
       conn.close();
    }catch(SQLException se){
       se.printStackTrace();
-	   error=se;
    }catch(Exception e){
       e.printStackTrace();
-	   error=e;
    }finally{
       try{
          if(stmt!=null)
             stmt.close();
       }catch(SQLException se2){
-	      error=se2;
       }
       try{
          if(conn!=null)
             conn.close();
       }catch(SQLException se){
          se.printStackTrace();
-	      error=se;
       }
-	System.out.println("Coś poszło nie tak...");
-	error.printStackTrace();
    }
  }
 }
