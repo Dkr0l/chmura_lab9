@@ -19,34 +19,39 @@ public class ObslugaBazy {
       stmt = conn.createStatement();
       String sql;
 	   
-      sql="CREATE TABLE Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(30) NOT NULL,lastname VARCHAR(30) NOT NULL,email VARCHAR(50))";	
-      stmt.executeUpdate(sql);
-      System.out.println("Created table in given database...");
-	   
-      sql = "INSERT INTO Users " +
+      DatabaseMetaData dbm = con.getMetaData();
+      // check if "Users" table exist
+      ResultSet tables = dbm.getTables(null, null, "Users", null);
+      if (!tables.next()) {	//Table Users does not exist
+      	sql="CREATE TABLE Users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(30) NOT NULL,lastname VARCHAR(30) NOT NULL,email VARCHAR(50))";	
+	stmt.executeUpdate(sql);
+	sql = "INSERT INTO Users " +
                    "VALUES (1, 'Ali', 'Baba', 'gold@hand.com')";
-      stmt.executeUpdate(sql);
-      sql = "INSERT INTO Users " +
+      	stmt.executeUpdate(sql);
+      	sql = "INSERT INTO Users " +
                    "VALUES (2, 'Baba', 'Wanga', 'putin@forever.ru')";
-      stmt.executeUpdate(sql);
-      sql = "INSERT INTO Users " +
+      	stmt.executeUpdate(sql);
+      	sql = "INSERT INTO Users " +
                    "VALUES (3, 'Jan', 'Kowalski', 'jKowalski@gmail.com')";
-      stmt.executeUpdate(sql);
+      	stmt.executeUpdate(sql);
+	System.out.println("Created table Users in the database.");
+      }
 	   
-      sql = "SELECT firstname, lastname, email FROM Users";
+      sql = "SELECT id, firstname, lastname, email FROM Users";
       ResultSet rs = stmt.executeQuery(sql);
-
+      System.out.println("TABLE USERS");
+      String foramt = "%s\t| %s\t| %s\t| %s";
+      System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
       while(rs.next()){
+	 int id = rs.getInt("id");
          String first = rs.getString("firstname");
          String last = rs.getString("lastname");
 	 String email = rs.getString("email");
-
-         System.out.println(", Imię: " + first);
-         System.out.println(", Nazwisko: " + last);
-	 System.out.println(", Email: " + email);
+         System.out.println(String.format(format, id+"", first+"", last, email));
+	 //System.out.println(" ID: "+id+"\t Imię: " + first+"\t Nazwisko: " + last+"\t Email: " + email);
       }
 	  
-	   boolean running=true;
+	   boolean running=false;
 	   while(running){
 	   	Thread.sleep(1000);
 	   	System.out.println("Running...");
@@ -76,14 +81,8 @@ public class ObslugaBazy {
          se.printStackTrace();
 	      error=se;
       }
-	   try{
-		   boolean running=true;
-	   while(running){
-	   	Thread.sleep(1000);
-	   	System.out.println("Coś poszło nie tak...");
-		   error.printStackTrace();
-	   }
-	   }catch(Exception e){}
+	System.out.println("Coś poszło nie tak...");
+	error.printStackTrace();
    }
  }
 }
