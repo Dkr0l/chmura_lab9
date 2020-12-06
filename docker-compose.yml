@@ -9,8 +9,6 @@ services:
    MYSQL_PASSWORD: password
    MYSQL_DATABASE: baza
   container_name: Cloud2020-88732
-  ports:
-   - 3306:3306
   networks:
    Bridge-Zadanie-1:
     ipv4_address: 10.0.10.3
