@@ -15,8 +15,7 @@ services:
   expose:
    - 3306
  java:
-  build:
-   context: ./
+  image: dakr0/lab9_java
   restart: on-failure
   depends_on:
    - Cloud2020-88732
