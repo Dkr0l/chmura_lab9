@@ -7,6 +7,8 @@ public class ObslugaBazy {
    static final String USER = "DKrol";
    static final String PASS = "password";
    
+	Exception error;
+	
    public static void main(String[] args) {
    Connection conn = null;
    Statement stmt = null;
@@ -56,25 +58,30 @@ public class ObslugaBazy {
       conn.close();
    }catch(SQLException se){
       se.printStackTrace();
+	   error=se;
    }catch(Exception e){
       e.printStackTrace();
+	   error=e;
    }finally{
       try{
          if(stmt!=null)
             stmt.close();
       }catch(SQLException se2){
+	      error=se2;
       }
       try{
          if(conn!=null)
             conn.close();
       }catch(SQLException se){
          se.printStackTrace();
+	      error=se;
       }
 	   try{
 		   boolean running=true;
 	   while(running){
 	   	Thread.sleep(1000);
 	   	System.out.println("Coś poszło nie tak...");
+		   error.printStackTrace();
 	   }
 	   }catch(Exception e){}
    }
