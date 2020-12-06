@@ -40,9 +40,8 @@ public class ObslugaBazy {
       System.out.println("TABLE USERS");
       String format = "%6s\t| %20s\t| %20s\t| %30s";
       System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
-      String str = "-";
-      String repeated20 = str.repeat(20);
-      String repeated30 = str.repeat(30);
+      String repeated20 = "-".repeat(20);
+      String repeated30 = "-".repeat(30);
       System.out.println("------+"+repeated20+"+"+repeated20+"+"+repeated30);	//draws a horizontal line
       while(rs.next()){
 	 int id = rs.getInt("id");
