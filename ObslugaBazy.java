@@ -81,6 +81,7 @@ public class ObslugaBazy {
 	
 	static void printTab(String line) throws SQLException{
 		ResultSet rs = stmt.executeQuery(line);
+		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
    		while (rs.next()) {
        			for (int i = 1; i <= columnsNumber; i++) {
