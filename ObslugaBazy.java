@@ -51,7 +51,7 @@ public class ObslugaBazy {
 				System.out.println("print - prints the User table");
 				System.out.println("add - starts dialog for adding new record");
 				System.out.println("rm - starts dialog for deleting a record");
-				System.out.println("quit - shuts down the terminal")
+				System.out.println("quit - shuts down the terminal");
 				}
 			}
 			
