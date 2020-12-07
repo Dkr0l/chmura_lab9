@@ -1,5 +1,6 @@
 import java.sql.*;
-import java.io.Reader.*;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 public class ObslugaBazy {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
@@ -8,9 +9,10 @@ public class ObslugaBazy {
 	static final String USER = "DKrol";
 	static final String PASS = "password";
 
+	Connection conn = null;
+	Statement stmt = null;
+	
 	public static void main(String[] args) {
-		Connection conn = null;
-		Statement stmt = null;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Connecting to database...");
