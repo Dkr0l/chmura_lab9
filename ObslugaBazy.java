@@ -70,6 +70,7 @@ public class ObslugaBazy {
 	static void executeCmd(String line){
 		try{
 			String command = line.substring(0,5);
+			System.out.println(command);
 			if(command.equals("SELECT")||command.equals("select"))printTab(line);
 			else stmt.executeUpdate(line);
 		}catch(SQLException se){
