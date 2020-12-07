@@ -85,7 +85,6 @@ public class ObslugaBazy {
 		int columnsNumber = rsmd.getColumnCount();
 		String format="\t|%20s";
 		for (int i = 1; i <= columnsNumber; i++) {
-        			if (i > 1) System.out.print(",  ");
            			System.out.print(String.format(format, rsmd.getColumnName(i)));
        		}
    		while (rs.next()) {
