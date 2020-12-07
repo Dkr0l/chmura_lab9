@@ -83,7 +83,7 @@ public class ObslugaBazy {
 		ResultSet rs = stmt.executeQuery(line);
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
-		String format="\t|%20s";
+		String format="|%20s";
 		for (int i = 1; i <= columnsNumber; i++) {
            			System.out.print(String.format(format, rsmd.getColumnName(i)));
        		}
