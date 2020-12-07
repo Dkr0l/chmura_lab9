@@ -78,19 +78,23 @@ public class ObslugaBazy {
 	}
 	
 	static void printTab(){
-		String sql = "SELECT id, firstname, lastname, email FROM Users";
-		ResultSet rs = stmt.executeQuery(sql);
-		System.out.println("TABLE USERS");
-		String format = "%6s\t| %20s\t| %20s\t| %30s";
-		System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
-		System.out.println("--------+-----------------------+-----------------------+------------------------------");	//draws a horizontal line
-		while(rs.next()){
-			int id = rs.getInt("id");
-			String first = rs.getString("firstname");
-			String last = rs.getString("lastname");
-			String email = rs.getString("email");
-			System.out.println(String.format(format, id+"", first+"", last, email));
+		try{
+			String sql = "SELECT id, firstname, lastname, email FROM Users";
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("TABLE USERS");
+			String format = "%6s\t| %20s\t| %20s\t| %30s";
+			System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
+			System.out.println("--------+-----------------------+-----------------------+------------------------------");	//draws a horizontal line
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String first = rs.getString("firstname");
+				String last = rs.getString("lastname");
+				String email = rs.getString("email");
+				System.out.println(String.format(format, id+"", first+"", last, email));
+			}
+			rs.close();
+		}catch(SQLException se){
+			se.printStackTrace();
 		}
-		rs.close();
 	}
 }
