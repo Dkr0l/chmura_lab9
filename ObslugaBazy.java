@@ -9,8 +9,8 @@ public class ObslugaBazy {
 	static final String USER = "DKrol";
 	static final String PASS = "password";
 
-	Connection conn = null;
-	Statement stmt = null;
+	static Connection conn = null;
+	static Statement stmt = null;
 	
 	public static void main(String[] args) {
 		try{
