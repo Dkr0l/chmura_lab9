@@ -87,12 +87,17 @@ public class ObslugaBazy {
 		for (int i = 1; i <= columnsNumber; i++) {
            			System.out.print(String.format(format, rsmd.getColumnName(i)));
        		}
+		System.out.println("");
+		for (int i = 1; i <= columnsNumber; i++) {
+           			System.out.print("+--------------------");
+       		}
+		System.out.println("+");
    		while (rs.next()) {
        			for (int i = 1; i <= columnsNumber; i++) {
            			String columnValue = rs.getString(i);
            			System.out.print(String.format(format, columnValue));
        			}
-       			System.out.println("");
+       			System.out.println("+");
    		}
 		rs.close();
 
