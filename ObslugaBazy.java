@@ -43,7 +43,7 @@ public class ObslugaBazy {
 			while(running){
 				System.out.println("\nType a command");
 				String line=buffer.readLine();
-				if(line.equals("exit")running=false;
+				if(line.equals("exit")) running=false;
 				else executeCmd(line);
 			}
 			
