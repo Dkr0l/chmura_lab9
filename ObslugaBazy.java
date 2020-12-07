@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.io.Reader.*;
 
 public class ObslugaBazy {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
@@ -66,15 +67,15 @@ public class ObslugaBazy {
 		}
 	}
 	
-	void addUser(){
+	static void addUser(){
 		System.out.println("ADDING USER");
 	}
 	
-	void rmUser(){
+	static void rmUser(){
 		System.out.println("REMOVING USER");
 	}
 	
-	void printTab(){
+	static void printTab(){
 		String sql = "SELECT id, firstname, lastname, email FROM Users";
 		ResultSet rs = stmt.executeQuery(sql);
 		System.out.println("TABLE USERS");
