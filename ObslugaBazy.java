@@ -97,7 +97,7 @@ public class ObslugaBazy {
            			String columnValue = rs.getString(i);
            			System.out.print(String.format(format, columnValue));
        			}
-       			System.out.println("+");
+       			System.out.println("|");
    		}
 		rs.close();
 
