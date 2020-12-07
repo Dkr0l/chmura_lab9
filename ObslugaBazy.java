@@ -40,9 +40,9 @@ public class ObslugaBazy {
 			while(running){
 				String line=buffer.readLine();
 				if(line.equals("print")) printTab();
-				else if(line.equals(quit))running=false;
-				else if(line.equals(add))
-				else if(line.equals(rm))
+				else if(line.equals("quit"))running=false;
+				else if(line.equals("add"))addUser();
+				else if(line.equals("rm"))rmUser();
 			}
 			
 			stmt.close();
