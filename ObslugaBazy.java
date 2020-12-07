@@ -69,7 +69,7 @@ public class ObslugaBazy {
 	
 	static void executeCmd(String line){
 		try{
-			String command = line.substring(0,5);
+			String command = line.substring(0,6);
 			System.out.println(command);
 			if(command.equals("SELECT")||command.equals("select"))printTab(line);
 			else stmt.executeUpdate(line);
@@ -81,17 +81,15 @@ public class ObslugaBazy {
 	
 	static void printTab(String line) throws SQLException{
 		ResultSet rs = stmt.executeQuery(line);
-		System.out.println("\n\t\tTABLE USERS");
-		String format = "%6s\t| %20s\t| %20s\t| %30s";
-		System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
-		System.out.println("--------+-----------------------+-----------------------+------------------------------");	//draws a horizontal line
-		while(rs.next()){
-			int id = rs.getInt("id");
-			String first = rs.getString("firstname");
-			String last = rs.getString("lastname");
-			String email = rs.getString("email");
-			System.out.println(String.format(format, id+"", first+"", last, email));
-		}
+		int columnsNumber = rsmd.getColumnCount();
+   		while (rs.next()) {
+       			for (int i = 1; i <= columnsNumber; i++) {
+        			if (i > 1) System.out.print(",  ");
+           			String columnValue = rs.getString(i);
+           			System.out.print(columnValue + " " + rsmd.getColumnName(i));
+       			}
+       			System.out.println("");
+   		}
 		rs.close();
 
 	}
