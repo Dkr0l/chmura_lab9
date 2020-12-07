@@ -37,22 +37,13 @@ public class ObslugaBazy {
 				stmt.executeUpdate(sql);
 				System.out.println("Created table Users in the database.");
 			}
-						
+			
 			BufferedReader buffer=new BufferedReader(new InputStreamReader(System.in));
 			boolean running=true;
 			while(running){
-				System.out.println("\nType a command (or \"help\")");
+				System.out.println("\nType a command");
 				String line=buffer.readLine();
-				if(line.equals("print")) printTab();
-				else if(line.equals("quit"))running=false;
-				else if(line.equals("add"))addUser();
-				else if(line.equals("rm"))rmUser();
-				else if(line.equals("help")){
-				System.out.println("print - prints the User table");
-				System.out.println("add - starts dialog for adding new record");
-				System.out.println("rm - starts dialog for deleting a record");
-				System.out.println("quit - shuts down the terminal");
-				}
+				executeCmd(line);
 			}
 			
 			stmt.close();
@@ -76,18 +67,20 @@ public class ObslugaBazy {
 		}
 	}
 	
-	static void addUser(){
-		System.out.println("ADDING USER");
-	}
-	
-	static void rmUser(){
-		System.out.println("REMOVING USER");
-	}
-	
-	static void printTab(){
+	static void executeCmd(String line){
 		try{
-			String sql = "SELECT id, firstname, lastname, email FROM Users";
-			ResultSet rs = stmt.executeQuery(sql);
+			String command = line.substring(0,5));
+			if(command.equals("SELECT")||command.equals("select"))printTab(line);
+			else stmt.executeUpdate(line);
+		}catch(SQLException se){
+			System.out.println("\n Something went wrong...");
+			se.printStackTrace();
+		}
+	}
+	
+	static void printTab(String line){
+		try{
+			ResultSet rs = stmt.executeQuery(line);
 			System.out.println("\n\t\tTABLE USERS");
 			String format = "%6s\t| %20s\t| %20s\t| %30s";
 			System.out.println(String.format(format, "ID", "NAME", "SURNAME", "EMAIL"));
